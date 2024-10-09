@@ -1,0 +1,119 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background-color: #f0f0f0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1px;
+  margin-left: 0;
+  margin-bottom: 10px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.preset-buttons {
+  display: block; /* Grid Layout を使用 */
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 5px;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.preset-button {
+  padding: 6px 12px;
+  min-width: auto;
+  margin-right: 8px; /* 右側のマージン */
+  margin-bottom: 8px; /* 下側のマージン */
+}
+
+.send-button {
+  align-self: flex-end;
+  white-space: nowrap;
+}
+
+.preset-button.selected {
+  background-color: #edff76;
+}
+
+.preset-group {
+  border: 1px solid #878787;
+  padding: 5px, 10px;
+  margin-bottom: 0px; /* 必要に応じて調整 */
+}
+
+.input-container-wrapper {
+  display: block;
+  flex-direction: column;
+  width: 100%;
+  margin: 20 auto;
+  gap: 10px;
+}
+
+textarea {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 10px;
+  width: 100%; /* padding の分を引く */
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+  margin-right: 10px; /* margin-right を 0 に変更 */
+  box-sizing: border-box; /* box-sizing を border-box に設定 */
+  margin: 0 auto;
+  margin-top: 10px;
+  flex-grow: 1;
+}
+
+.textarea-and-button-wrapper {
+  /* 新しいラッパー */
+  display: flex;
+  align-items: center; /* 垂直方向中央揃え */
+  width: 85%; /* 親要素の幅いっぱいに */
+  margin: 0 auto;
+}
+
+.image-box-group {
+  display: flex;
+  align-items: center;
+}
+
+.personality-select,
+.question-select,
+.audience-select {
+  /* question-select のスタイルを追加 */
+  width: 100%;
+  margin-bottom: 10px;
+}
