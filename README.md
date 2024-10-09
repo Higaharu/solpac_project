@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+ファイル構成 src/
+├App.css
+├App.js
+├index.css
+├index.js
+├InputField.js ──── 選択ボタンのコンポーネント。jsonファイルを受けとって自動で追加。ペルソナの文もここで加えている。
+├MessageList.js ──── チャット画面のコンポーネント
+├MyComponent.js ──── GPTと接続するためのファイル。橋渡し的なの。
+├main.py ──── GPTとAzure Ai Searchと接続しているファイル。サーバとして動かしてから使う。バックエンドでプロンプトの追加をしている。ここで追加したプロンプトは画面には表示されない。
+├preset_buttons.json ──── ペルソナの有無、ボタンの名前、質問文を管理しているjsonファイル。ここを弄ることでボタンを減らしたり増やしたりできる。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+nodeが入っていること前提
+npx create-react-app {任意のフォルダ名}
 
-## Available Scripts
+npm !ERROR no search file or directory User/サインしているアカウント名/AppData/Roming/npm と出るときはRomingディレクトリ配下にnpmのディレクトリを作成するとうまくいく
 
-In the project directory, you can run:
+git clone https://github.com/kotaro-desu/part-time-job.git
+または、上記の所からzipファイルをダウンロードして解凍
 
-### `npm start`
+node_modules以外は上記のファイルに置き換える
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+pythonに使うライブラリのインストール
+#pip install openai
+#pip install fastapi
+#pip install uvicorn
+#pip install requests
+#pip install azure-core
+#pip install azure-search-documents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+サーバの起動（これをしないとGPTにアクセス出来ない）
+#main.pyのあるディレクトリに移動して実行
+#uvicorn main:app --reload
 
-### `npm test`
+reactに使うパッケージのインストール
+#npm install ~で実行
+@chatscope
+@emotion
+@mui
+testing-library
+axios
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#npm start
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#ボタンの追加について
+groupは人格（ペルソナ）の有無。0が人格なし、1が人格あり。
+labelはボタンに追加する文章。ギットと書くとギットのボタンが追加される。
+messageは実際にGPTに渡す文章で、ここにちゃんとしたものを書く。「ギットとは何ですか？」と書くと、チャットとGPTに書いたものが表示、送信される。
